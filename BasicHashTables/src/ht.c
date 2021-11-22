@@ -58,22 +58,7 @@ int insert(char * key, HT * t) {
    if not found and the array index of the key if it is found */
 int find(char * key, HT * t) {
   // LAB EXERCISE: complete this function
-	if(key == NULL || t == NULL) {
-	    printf("%s not found.\n", key);
-	    return -1;
-	  }
-	unsigned int hashValue = hash(key);
-	unsigned int location = hashValue % t->size;
-	unsigned int originalLocation = location;
-	while (t->table[location] != NULL) {
-		if (strcmp(t->table[location], key) == 0)
-			return location;
-		location++;
-		location = location % t->size;
-		if (location == originalLocation) {
-			return -1;
-		}
-	}
+
 
   return -1;
 }
@@ -103,14 +88,7 @@ void printTable(HT * t) {
   printf("Num items: %d\n", t->numItems);
   printf("-----------------------\n");
   // COMPLETE FUNCTION HERE
-  for (i = 0; i < t->size; i++) {
-	  if (t->table[i] != NULL)
-		  printf("%d : %s\n", i, t->table[i]);
-	  else
-		  printf("%d : \n", i);
-  }
 
-  printf("-----------------------\n\n");
 }
 
 /* hash function maps strings to unsigned ints */
