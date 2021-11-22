@@ -1,10 +1,10 @@
 /**************************************************************************
  File name:		  BSTdriver.c
  Author:        Shereen Khoja, Pacific University
- Date:          11.4.2021
+ Date:          11.22.2021
  Class:         CS300
- Assignment:    Binary Search Trees
- Purpose:       This file uses the Binary Search Tree data structure
+ Assignment:    Hash Tables
+ Purpose:       This file uses the Hash Table data structure
  *************************************************************************/
 
 #include <stdio.h>
@@ -25,7 +25,7 @@
  *************************************************************************/
 int main () {
 
-	unsigned int N = 11;  //default hash table size
+	unsigned int N = 17;  //default hash table size
 	  HT * ht = initTable(N);
 	  int ok1 = insert("orange", ht);
 	  int ok2 = insert("banana", ht);
