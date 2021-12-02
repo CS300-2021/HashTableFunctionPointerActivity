@@ -79,11 +79,14 @@ uint32_t hash (void *pKey) {
  Returned: bucket - index at which to place hash table element in table.
  *************************************************************************/
 uint32_t midSquareHash (void *pKey) {
-	uint32_t key = *(int *) pKey;
-	uint32_t bucket, lowBitsToRemove, extractedBits;
+	uint32_t key, bucket, lowBitsToRemove, extractedBits;
 
-	key = key * key;
+	key = *(int *) pKey; // convert key to an int // 0x000012AB
+	key = key * key;     // square the key // 0x015C7E39
 
+	// NUM_BITS = 32, NUM_MID_BITS = 8
+	// Goal: get middle 8 bits from an int
+	// Assume ints are 4 bytes, which is 32 bits
 	lowBitsToRemove = (NUM_BITS - NUM_MID_BITS) / 2;
 	extractedBits = key >> lowBitsToRemove;
 	extractedBits = extractedBits & (0xFFFFFFFF >> (NUM_BITS - NUM_MID_BITS));
