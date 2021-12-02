@@ -24,7 +24,6 @@ uint32_t hash (void *pKey);
 uint32_t midSquareHash (void *pKey);
 uint32_t multiplicativeStringHash (const void *pKey);
 HT* testStringHashTable (HT *ht);
-HT* testIntHashTable (HT *ht);
 
 /**************************************************************************
  Function: 	 	main()
@@ -39,10 +38,6 @@ int main () {
 
 	HT *ht = initTable (TABLE_SIZE, &hash);
 	ht = testStringHashTable (ht);
-	freeTable (ht);
-
-	ht = initTable (TABLE_SIZE, &midSquareHash);
-	ht = testIntHashTable (ht);
 	freeTable (ht);
 
 	printf ("\n\nReached the end!");
@@ -162,32 +157,6 @@ HT* testStringHashTable (HT *ht) {
 
 	int loc5 = find ("yogurt", ht);
 	int loc6 = find ("cereal", ht);
-
-	return ht;
-}
-
-HT* testIntHashTable (HT *ht) {
-	printf("INTEGER HASH TABLE\n");
-	int key = 4575;
-	int ok1 = insert ("orange", &key, ht);
-	key = 455754;
-	int ok2 = insert ("banana", &key, ht);
-	key = 8553;
-	int ok3 = insert ("strawberry", &key, ht);
-	key = 57;
-	int ok4 = insert ("pineapple", &key, ht);
-	key = 4684;
-	int ok5 = insert ("orange", &key, ht);
-	key = 845;
-	int ok6 = insert ("chocolate", &key, ht);
-	key = 9673;
-	int ok7 = insert ("rice", &key, ht);
-	key = 8776;
-	int ok8 = insert ("corn", &key, ht);
-	key = 34;
-	int ok9 = insert ("papaya", &key, ht);
-
-	printTable (ht);
 
 	return ht;
 }
