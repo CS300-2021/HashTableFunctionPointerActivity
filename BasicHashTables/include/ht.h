@@ -11,7 +11,6 @@ typedef struct HT {
 	pHash pHashFunction;
   unsigned int size;         // max size of hash table
   unsigned int numItems;     // num items in hash table
-  unsigned int numCollisions;
   void * key;
   char ** table;             // array of strings
 } HT;

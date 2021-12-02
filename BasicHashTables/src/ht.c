@@ -12,7 +12,6 @@ HT * initTable(int n, pHash pHashFun) {
   t->size = n;
   t->pHashFunction = pHashFun;
   t->numItems = 0;
-  t->numCollisions = 0;
   t->table = (char **)malloc(sizeof(char *) * n);
   if(t->table == NULL) {
     return NULL;  // memory not allocated
@@ -47,7 +46,6 @@ int insert(char * data, void * key, HT * t) {
   unsigned int hashValue = t->pHashFunction(key);
   unsigned int location = hashValue % t->size;
   while(t->table[location] != NULL && strcmp(t->table[location],DELETE) != 0) {
-  	t->numCollisions++;
     location = location + 1;
     location = location % t->size;  // wrap-around if necessary
   }
@@ -114,8 +112,6 @@ void printTable(HT * t) {
 		  printf("%d : \n", i);
   }
   printf("-----------------------\n");
-  printf("# of collisions: %d\n\n", t->numCollisions);
-
 }
 
 
